@@ -38,3 +38,8 @@ Console.WriteLine($"Total de {person.FirstName} : {bank.GetTotalBalance(person)}
 bank.DeleteAccount("BE01");
 bank.DeleteAccount("BE02");
 Console.WriteLine($"Après suppression : {bank.Accounts.Count} compte(s)");
+
+var savings = new SavingsAccount("BE10", person);
+savings.Deposit(500);
+savings.Withdraw(200);
+Console.WriteLine($"Épargne : {savings.Balance}, dernier retrait : {savings.DateLastWithdraw:dd/MM/yyyy}");
