@@ -14,13 +14,16 @@ public class Bank(string name)
         if (!Accounts.Remove(number))
             throw new KeyNotFoundException($"Le compte {number} n'existe pas.");
     }
-        public double GetBalance(string number)
+
+    public double GetBalance(string number)
     {
         if (!Accounts.TryGetValue(number, out var account))
             throw new KeyNotFoundException($"Le compte {number} n'existe pas.");
 
         return account.Balance;
-    }    public double GetTotalBalance(Person owner)
+    }
+
+    public double GetTotalBalance(Person owner)
     {
         var total = 0.0;
 
@@ -33,4 +36,3 @@ public class Bank(string name)
         return total;
     }
 }
-
