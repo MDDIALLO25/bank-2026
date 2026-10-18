@@ -1,9 +1,9 @@
 public class Bank(string name)
 {
     public string Name { get; set; } = name;
-    public Dictionary<string, CurrentAccount> Accounts { get; } = new();
+    public Dictionary<string, Account> Accounts { get; } = new();
 
-    public void AddAccount(CurrentAccount account)
+    public void AddAccount(Account account)
     {
         if (!Accounts.TryAdd(account.Number, account))
             throw new InvalidOperationException($"Le compte {account.Number} existe déjà.");
