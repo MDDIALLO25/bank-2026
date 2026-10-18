@@ -1,19 +1,14 @@
-namespace Bank2026.Models;
-
-public class CurrentAccount
+public class CurrentAccount(string number, Person owner)
 {
-    public string Number { get; set; }
-
+    public string Number { get; set; } = number;
     public double Balance { get; private set; }
-
     public double CreditLine { get; set; }
-
-    public Person Owner { get; set; }
+    public Person Owner { get; set; } = owner;
 
     public void Deposit(double amount)
     {
         if (amount <= 0)
-            throw new ArgumentException("Le montant doit être positif.");
+            throw new ArgumentOutOfRangeException(nameof(amount), "Le montant doit être positif.");
 
         Balance += amount;
     }
@@ -21,10 +16,10 @@ public class CurrentAccount
     public void Withdraw(double amount)
     {
         if (amount <= 0)
-            throw new ArgumentException("Le montant doit être positif.");
+            throw new ArgumentOutOfRangeException(nameof(amount), "Le montant doit être positif.");
 
         if (Balance - amount < -CreditLine)
-            throw new InvalidOperationException("Crédit dépassé.");
+            throw new InvalidOperationException("Solde insuffisant.");
 
         Balance -= amount;
     }
