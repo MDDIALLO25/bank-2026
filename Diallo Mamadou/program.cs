@@ -24,11 +24,11 @@ catch (InvalidOperationException e)
 
 var bank = new Bank("Ma Banque");
 bank.AddAccount(account);
-Console.WriteLine($"{bank.Name} : {bank.Accounts.Count} compte(s)");
+Console.WriteLine($"Ma Banque : {bank.Accounts.Count} compte(s)");
+Console.WriteLine($"Solde de BE01 : {bank.GetBalance("BE01")}");
 
 foreach (KeyValuePair<string, CurrentAccount> pair in bank.Accounts)
     Console.WriteLine($"{pair.Key} -> {pair.Value.Balance}");
 
 bank.DeleteAccount("BE01");
 Console.WriteLine($"Après suppression : {bank.Accounts.Count} compte(s)");
-Console.WriteLine($"Solde de BE01 : {bank.GetBalance("BE01")}");

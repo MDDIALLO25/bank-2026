@@ -20,6 +20,17 @@ public class Bank(string name)
             throw new KeyNotFoundException($"Le compte {number} n'existe pas.");
 
         return account.Balance;
+    }    public double GetTotalBalance(Person owner)
+    {
+        var total = 0.0;
+
+        foreach (var pair in Accounts)
+        {
+            if (pair.Value.Owner == owner)
+                total += pair.Value.Balance;
+        }
+
+        return total;
     }
 }
 
