@@ -21,3 +21,13 @@ catch (InvalidOperationException e)
 {
     Console.WriteLine($"Refusé : {e.Message}");
 }
+
+var bank = new Bank("Ma Banque");
+bank.AddAccount(account);
+Console.WriteLine($"{bank.Name} : {bank.Accounts.Count} compte(s)");
+
+foreach (KeyValuePair<string, CurrentAccount> pair in bank.Accounts)
+    Console.WriteLine($"{pair.Key} -> {pair.Value.Balance}");
+
+bank.DeleteAccount("BE01");
+Console.WriteLine($"Après suppression : {bank.Accounts.Count} compte(s)");
