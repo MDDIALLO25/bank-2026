@@ -31,3 +31,4 @@ foreach (KeyValuePair<string, CurrentAccount> pair in bank.Accounts)
 
 bank.DeleteAccount("BE01");
 Console.WriteLine($"Après suppression : {bank.Accounts.Count} compte(s)");
+Console.WriteLine($"Solde de BE01 : {bank.GetBalance("BE01")}");
