@@ -7,4 +7,9 @@ public class SavingsAccount(string number, Person owner) : Account(number, owner
         base.Withdraw(amount);
         DateLastWithdraw = DateTime.Now;
     }
+
+    protected override double CalculInterets()
+    {
+        return Balance * 0.045;
+    }
 }

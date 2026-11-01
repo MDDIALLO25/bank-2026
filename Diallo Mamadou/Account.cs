@@ -1,10 +1,12 @@
-public class Account(string number, Person owner)
+public abstract class Account(string number, Person owner)
 {
     public string Number { get; set; } = number;
     public double Balance { get; private set; }
     public Person Owner { get; set; } = owner;
 
     protected virtual double MinimumBalance => 0;
+
+    protected abstract double CalculInterets();
 
     public void Deposit(double amount)
     {
@@ -23,5 +25,10 @@ public class Account(string number, Person owner)
             throw new InvalidOperationException("Solde insuffisant.");
 
         Balance -= amount;
+    }
+
+    public void ApplyInterest()
+    {
+        Balance += CalculInterets();
     }
 }
